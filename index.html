@@ -1,11 +1,24 @@
-echo '<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=http://3.133.150.187:3000/" />
-    <title>Redirection</title>
-  </head>
-  <body>
-    <h1>Redirection vers le site de staging</h1>
-    <p>Vous allez être redirigé vers le site de staging.</p>
-  </body>
-</html>' > index.html
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Redirection</title>
+  <meta http-equiv="refresh" content="3; url=http://3.133.150.187:3000/">
+  <style>
+    html,body{height:100%;margin:0;background:#0d0d0d;color:#20c20e;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center}
+    #term{white-space:pre;font-size:1.2rem}
+    .cursor{animation:blink 1s steps(2) infinite}
+    @keyframes blink{to{color:transparent}}
+  </style>
+</head>
+<body>
+  <div id="term"><span id="txt"></span><span class="cursor">▮</span></div>
+  <script>
+    const msg = "Connexion au serveur de staging…\nRedirection en cours…\n\n";
+    let i = 0;
+    const span = document.getElementById('txt');
+    const type = () => { if (i < msg.length) { span.textContent += msg[i++]; setTimeout(type, 40); } };
+    type();
+  </script>
+</body>
+</html>
